@@ -35,17 +35,7 @@ def _get_similarity_threshold(title: str) -> float:
         return 0.85  # 一般情況
 
 def find_reference_with_gemini_search(row: dict):
-    """
-    使用 Gemini Search 尋找學術文獻（智能驗證版）
-    
-    改進點：
-    1. **提供完整資訊** - 標題、作者、年份、DOI（如果有）都提供給 AI
-    2. **DOI 優先** - 如果原始資料有 DOI，優先用 DOI 搜尋
-    3. **AI 智能判斷** - 讓 AI 根據標題相似度、作者匹配、年份一致性綜合判斷
-    4. **明確驗證標準** - Prompt 中詳細說明如何驗證結果的準確性
-    5. DOI 提取 - 自動從 URL 提取 DOI
-    """
-    
+
     original_title = row.get("title", "").strip()
     author_str = row.get("author", "").strip()
     year = row.get("year", "")
